@@ -1,0 +1,14 @@
+{
+	"name":"PageAction Test",
+	"description":"Test code for page action with tabs",
+	"version":"0.1",
+	"permissions":["tabs"],
+	"background":{
+		"scripts":["background.js"]
+	},
+	"page_action":{
+		"default_title":"Test icon"
+	},
+	"manifest_version":2
+	
+}
