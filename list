@@ -3,4 +3,5 @@ TABLE OF CONTENT
 ID 	CONTENT 	DATE		DESCRIPTION
 ====================================================================
 001 	helloWorld 	2013-02-01	my first extension plugin	
+002		chrome.tabs 2013-02-06	test chrome API about tabs
 
