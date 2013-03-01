@@ -1,0 +1,14 @@
+{
+	"manifest_version":2,
+	"name":"Option Page",
+	"version":"1.0",
+	"permissions":["tabs"],
+	"background":{
+		"scripts":["background.js"]
+	},
+	"description":"Usage of option Page",
+	"options_page":"options.html",
+	"browser_action":{
+		"default_icon":"icon.png"
+	}
+}

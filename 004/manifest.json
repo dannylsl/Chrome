@@ -1,0 +1,13 @@
+{
+	"manifest_version":2,
+	"name":"BrowserAction",
+	"version":"1.0",
+	"permissions":["tabs"],
+	"background":{
+		"scripts":["background.js"]	
+	},
+	"description":"Browser Action click to open main.html",
+	"browser_action":{
+		"default_icon":"icon.png"	
+	}
+}

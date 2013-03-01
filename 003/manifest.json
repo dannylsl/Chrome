@@ -1,0 +1,33 @@
+// Content Script 
+// Content script test
+// dannylsl@sina.com
+// 2012-02-07
+{
+	"name":"Content Script",	
+	"description":"Content Script Test",
+	"version":"0.1",
+	"permission":,
+	"content_scripts":[
+		{
+			"matches":["http://www.google.com/*"],
+			"css":["mystyle.css"],
+			"js":["j"],
+		}
+	],
+}
+// If your content script's code should always be injected, register it in
+// the extension manifest using content_scripts field, as in the following
+// example
+// {
+//		"name":"My extension",
+//		...
+//		"content_script":{
+//			"matches":["http://www.google.com/*"],
+//			"css":["mysytle.css"],
+//			"js":["jquery,js","myscript.js"]
+//		}
+// }
+//
+// If you want to inject the code only sometimes,use the permissions field 
+// instead, as described in the Programmatic injection
+// [http://developer.chrome.com/extensions/content_scripts.html#pi]

@@ -1,7 +1,10 @@
 TABLE OF CONTENT
 ===================================================================
-ID 	CONTENT 	DATE		DESCRIPTION
+ID		CONTENT			DATE		DESCRIPTION
 ====================================================================
-001 	helloWorld 	2013-02-01	my first extension plugin	
-002		chrome.tabs 2013-02-06	test chrome API about tabs
-
+001 	helloWorld		2013-02-01	my first extension plugin	
+002		chrome.tabs		2013-02-06	test chrome API about tabs
+003		content script  2013-02-10  Not finished
+004		BrowserAction	2013-02-16  Click to open a main.html		
+005		option Page		2013-02-17  option Page in manifest 
+006		worktime		2013-03-01  my extension limit url for work	

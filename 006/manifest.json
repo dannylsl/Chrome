@@ -1,0 +1,21 @@
+{
+	"manifest_version":2,
+	"name":"WorkTime",
+	"version":"1.0",
+	"permissions":["tabs"],
+	"background":{
+		"scripts":["background.js"]
+	},
+	"description":"worktime plugin limit some url at work time",
+	"options_page":"options.html",
+/*	
+	"page_action":{
+		"defualt_icon":"icon.png",
+		"defualt_title":"worktime by danny lee"
+	}
+*/
+ 	"browser_action":{
+		"default_icon":"icon.png",
+		"default_title":"worktime by danny lee"
+	}
+}
