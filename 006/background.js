@@ -5,31 +5,60 @@
 //		BASIC FUNCTION ADD 2013-03-01
 //
 
+
+
+//CONVERT HOUR&MINUTE TO AN VALUE
+function hm2val(hours,minutes){
+	return (hours*60+minutes);
+}
+
+//COMPARE TWO TIME STRING LIKE "8:30:00"
+//IF timeStr1 >= timeStr2  
+// RETURN TRUE
+//ELSE
+// RETURN FALSE
+function timeStrCmp(timeStr1,timeStr2){
+	var time1 = timeStr1.split(':'); time2 = timeStr2.split(':');
+	var time1val = hm2val(time1[0],time1[1]);
+	var time2val = hm2val(time2[0],time2[1]);
+
+	return (time1val>=time2val)?true:false;
+}
+
 chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
 	var urlArr = localStorage.getItem('urlArr').split(',');
-//	console.log(urlArr);
-//	console.log(tab.url);	
 	var currentUrl = tab.url;
+	var periodArr = localStorage.getItem('periodArr').split(',');
+	var curDate = new Date();
+	var curTime = curDate.getHours()+":"+curDate.getMinutes()+":00";
+	var furl = localStorage.getItem('furl');
+	console.log(curTime);
+	
+	for(var i=0;i<periodArr.length;i++){
+		var periodData = localStorage.getItem(periodArr[i]).split(',');	
+		console.log(periodData);
+		if(timeStrCmp(curTime,periodData[1]) && !timeStrCmp(curTime,periodData[2])){
+			console.log("It is work Time ");	
+			for(i=0;i<urlArr.length;i++){
 
-	for(var i=0;i<urlArr.length;i++){
-//		console.log(urlArr[i]);
-		var urlData=localStorage.getItem(urlArr[i]).split(',');	
+				var urlData=localStorage.getItem(urlArr[i]).split(',');	
+				var updateProperties ={
+					url:furl,
+					active:true,
+					highlighted:true
+				};
 
-//		console.log(urlData);
-		var updateProperties ={
-			url:"http://www.baidu.com",
-			active:true,
-			highlighted:true
-		};
+				if(currentUrl.indexOf(urlData[1])!= -1){
+					console.log(urlData[1]+' checked');
+					chrome.tabs.update(tabId,updateProperties,function(tab){
+						console.log("It's work time now");
+					});
+				}
 
-		if(currentUrl.indexOf(urlData[1])!= -1){
-			console.log(urlData[1]+' checked');
-			chrome.tabs.update(tabId,updateProperties,function(tab){
-				console.log("It's work time now");
-			});
+			}
 		}
-
 	}
+
 });
 
 

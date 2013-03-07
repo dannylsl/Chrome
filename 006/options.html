@@ -6,9 +6,27 @@
 	</head>
 	<body>
 		<div style="width:100%;"><div id='msg' style='display:none;'></div></div>
+
+		<div id="forward" style="margin-top:5px;" >
+			<table cellspacing="2" cellpadding="1" width="60%" align="center">
+				<tr class="thd" align="center">
+					<td width="20%">转向地址</td>	
+					<td width="60%">
+						<input type="text" id="furl">
+					</td>	
+					<td width="20%">
+						<button class="button" style="margin-top:2px;" id="saveForwardUrl" >
+							<img src="image/save.png">
+							<span>保存</span>
+						</button>
+					</td>	
+				</tr>			
+			</table>	
+		</div>	
+
 		<div id="period_0" style="padding-top:8px;">
-			<table id="tab1hd" border="1" width="60%" align="center">
-				<tr align="center">
+			<table id="tab1hd" cellspacing="2" cellpadding="1" border="0" width="60%" align="center">
+				<tr class="thd" align="center">
 					<td width="20%">时间段序号</td>
 					<td width="30%">开始时间</td>
 					<td width="30%">截止时间</td>
@@ -29,11 +47,11 @@
 		</center>
 
 		<div id="url" style="margin-top:10px;" >
-			<table border="1" width="60%" align="center">
-				<tr id="url_0" align="center">
-					<td>名称</td>	
-					<td>网站主域名</td>	
-					<td>操作</td>	
+			<table cellspacing="2" cellpadding="1" width="60%" align="center">
+				<tr id="url_0" class="thd" align="center">
+					<td width="20%">名称</td>	
+					<td width="60%">网站主域名</td>	
+					<td width="20%">操作</td>	
 				</tr>			
 			</table>	
 		</div>	

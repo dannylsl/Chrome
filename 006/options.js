@@ -35,6 +35,25 @@ function GetminuteSel(id,flag){
 
 }
 
+
+//CONVERT HOUR&MINUTE TO AN VALUE
+function hm2val(hours,minutes){
+	return (hours*60+minutes);
+}
+
+//COMPARE TWO TIME STRING LIKE "8:30:00"
+//IF timeStr1 >= timeStr2  
+// RETURN TRUE
+//ELSE
+// RETURN FALSE
+function timeStrCmp(timeStr1,timeStr2){
+	var time1 = timeStr1.split(':'); time2 = timeStr2.split(':');
+	var time1val = hm2val(time1[0],time1[1]);
+	var time2val = hm2val(time2[0],time2[1]);
+
+	return (time1val>=time2val)?true:false;
+}
+
 function SavePeriod(){
 	var periodData = new Array();
 	//[0] period ID
@@ -65,6 +84,10 @@ function init(){
 	var periodData = new Array();	
 	var urlData = new Array();
 	
+	//INITIALIZE THE FORWARD URL
+	var furl = localStorage.getItem('furl');
+	$("#furl").val(furl)
+
 	for(var i=1;i <= periodArr.length;i++){
 		periodData[i]= localStorage.getItem(periodArr[i-1]);	
 		console.log(i+"___"+periodData[i]);
@@ -91,7 +114,7 @@ function init(){
 		var minuSelEnd = GetminuteSel(tagId,'end');
 
 		$('#period_'+tagPreId).after("<div id='period_"+tagId+"'>"+
-				"<table border='1' width='60%' align='center'><tr align='center'>"+
+				"<table cellspacing='2' cellpadding='1' border='0' width='60%' align='center'><tr align='center'>"+
 				"<td width='20%'>"+tagId+"</td>"+
 				"<td width='30%'>"+hourSelStart+"时"+minuSelStart+"分"+"</td>"+
 				"<td width='30%'>"+hourSelEnd+"时"+minuSelEnd+"分"+"</td>"+
@@ -130,6 +153,8 @@ function init(){
 		$("#itemurl_"+nextTagId).click(text2edit);
 		$("#itemurl_edit_"+nextTagId).focusout(edit2text);
 		$("#urldel_"+nextTagId).click(delurl);
+
+
 	}	
 
 }
@@ -154,7 +179,7 @@ function addTable(){
 	var minuSelEnd = GetminuteSel(nextTagId,'end');
 
 	$('#'+lastTag).after("<div id='"+nextTag+"' style='display:none;'>"+
-			"<table border='1' width='60%' align='center'><tr align='center'>"+
+			"<table cellspacing='2' cellpadding='2' border='0' width='60%' align='center'><tr align='center'>"+
 			"<td width='20%'>"+nextTagId+"</td>"+
 			"<td width='30%'>"+hourSelStart+"时"+minuSelStart+"分"+"</td>"+
 			"<td width='30%'>"+hourSelEnd+"时"+minuSelEnd+"分"+"</td>"+
@@ -248,6 +273,14 @@ function SaveUrl(){
 	Message("URL Saved");
 }
 
+function SaveForwardURL(){
+	var furl = $('#furl').val();		
+	localStorage.setItem('furl',furl);
+	Message("Forward URL <span style='color:#3F00CC;'>"+furl+"</span> Saved!");
+	
+}
+
+
 init();
 $(document).ready(function(){
 	//var Cnt = localStorage.getItem('periodCnt');
@@ -255,6 +288,7 @@ $(document).ready(function(){
 	$("#savePeriodbtn").click(SavePeriod);	
 	$("#addUrlbtn").click(addUrl);
 	$("#saveUrlbtn").click(SaveUrl);
+	$("#saveForwardUrl").click(SaveForwardURL);
 
 	for(var i=1;i<=periodArr.length;i++){
 
