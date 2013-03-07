@@ -9,7 +9,7 @@
 
 //CONVERT HOUR&MINUTE TO AN VALUE
 function hm2val(hours,minutes){
-	return (hours*60+minutes);
+	return (Number(hours)*60+Number(minutes));
 }
 
 //COMPARE TWO TIME STRING LIKE "8:30:00"
@@ -18,10 +18,11 @@ function hm2val(hours,minutes){
 //ELSE
 // RETURN FALSE
 function timeStrCmp(timeStr1,timeStr2){
-	var time1 = timeStr1.split(':'); time2 = timeStr2.split(':');
+	var time1 = timeStr1.split(':'); 
+	var time2 = timeStr2.split(':');
 	var time1val = hm2val(time1[0],time1[1]);
 	var time2val = hm2val(time2[0],time2[1]);
-
+	console.log(timeStr1+"  "+timeStr2);
 	return (time1val>=time2val)?true:false;
 }
 
@@ -38,7 +39,7 @@ chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
 		var periodData = localStorage.getItem(periodArr[i]).split(',');	
 		console.log(periodData);
 		if(timeStrCmp(curTime,periodData[1]) && !timeStrCmp(curTime,periodData[2])){
-			console.log("It is work Time ");	
+			console.log(timeStrCmp(curTime,periodData[1])+"It is work Time "+timeStrCmp(curTime,periodData[2]));	
 			for(i=0;i<urlArr.length;i++){
 
 				var urlData=localStorage.getItem(urlArr[i]).split(',');	
